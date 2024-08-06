@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="next()" >
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput id="email" formControlName="email" type="email">
+      <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        <small *ngIf="form.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Invalid email.</small>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput id="password" formControlName="password" type="password">
+      <mat-error *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+        <small *ngIf="form.get('password')?.errors?.['required']">Password is required.</small>
+        <small *ngIf="form.get('password')?.errors?.['pattern']">Password must contain at least one letter and one digit.</small>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput id="confirmPassword" formControlName="confirmPassword" type="password">
+      <mat-error *ngIf="form.get('confirmPassword')?.value !== form.get('password')?.value && form.get('confirmPassword')?.touched">
+        <small>Passwords do not match.</small>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-checkbox formControlName="isAgree">I agree</mat-checkbox>
+    <mat-error *ngIf="form.get('isAgree')?.invalid && form.get('isAgree')?.touched">
+      <small>You must agree to continue.</small>
+    </mat-error>
+  </p>
+
+  <p>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.get('isAgree')?.value">Next</button>
+  </p>
+
+
+
+</form>

@@ -1,0 +1,24 @@
+### Запрос для получения списка стран
+GET https://localhost:7055/api/countries
+Accept: application/json
+
+###
+
+### Запрос для получения списка провинций по идентификатору страны
+GET https://localhost:7055/api/countries/1/provinces
+Accept: application/json
+
+###
+
+### Запрос для регистрации
+POST https://localhost:7055/api/registration
+Content-Type: application/json
+
+{
+  "Email": "user@example.com",
+  "Password": "Password123",
+  "CountryId": 1,
+  "ProvinceId": 1
+}
+
+###
